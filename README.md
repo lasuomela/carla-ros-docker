@@ -32,6 +32,11 @@ Next, clone the ROS bridge and checkout the latest stable version by
 
 ```bash
 git clone --recursive https://github.com/carla-simulator/ros-bridge.git
+```
+
+You can switch to a stable version by checking out tags, for example
+
+```bash
 git checkout tags/0.9.10.1
 ```
 
