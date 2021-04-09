@@ -32,7 +32,7 @@ Next, clone the ROS bridge and checkout the latest stable version by
 
 ```bash
 git clone --recursive https://github.com/carla-simulator/ros-bridge.git
-git checkout tags/0.9.10.1 -b master
+git checkout tags/0.9.10.1
 ```
 
 Build both docker images using the associated 'build.sh' scripts. Before building the Ros-bridge container, you might want to specify the desired python version for the ros bridge by setting the environment variable ROS_PYTHON_VERSION='3' or '2'.
