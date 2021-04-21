@@ -3,6 +3,8 @@ Dockerized Carla + Ros bridge
 
 ## Prerequisites
 
+A Linux machine with an Nvidia GPU, and nvidia-docker2.
+
 Check the instructions at
 
 https://carla.readthedocs.io/en/latest/build_docker/
