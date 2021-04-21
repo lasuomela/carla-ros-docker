@@ -4,7 +4,7 @@ Run Carla simulator and Carla-ROS bridge (ROS2 Foxy) inside docker containers.
 
 ## Prerequisites
 
-A Linux machine with an Nvidia GPU, and nvidia-docker2.
+A Linux machine with an Nvidia GPU and nvidia-docker2.
 
 Check the instructions at
 
@@ -79,29 +79,5 @@ Docker-display is based on the original 'docker' directory of Ros-Bridge. The in
 #### Compose
 
 The 'compose' directory is a ROS2 package which makes launching multiple ROS-bridge components more convenient. The version included in this repository launches the nodes that are necessary for a Carla autopilot that can be controlled using the Rviz tool or ros topics. The ROS nodes and packages to launch are defined in the 'compose.launch.py' file located in the 'compose/launch/' directory.
-
-
-
-Build both docker images using the associated 'build.sh' scripts. Before building the Ros-bridge container, you might want to specify the desired python version for the ros bridge by setting the environment variable ROS_PYTHON_VERSION='3' or '2'.
-
-To enable running GUI pygame applications from the ros-bridge container, it has to be added to the x11 access list by running 
-
-
-```bash
-xauth +local:
-```
-
-before the container is run the first time. To configure the x11 forwarding, modify the 'run.sh' script of ros-bridge so that the 'docker run' command includes the following arguments:
-
-```bash
-docker run \
-    -it --rm \
-    --net=host \
-    -e SDL_VIDEODRIVER='x11' \
-    -e DISPLAY=$DISPLAY\
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    --gpus 'all,"capabilities=graphics,utility,display,video,compute"' \
-    "$DOCKER_IMAGE_NAME:$TAG" "$@"
-```
 
 
