@@ -7,7 +7,7 @@ Check the instructions at
 
 https://carla.readthedocs.io/en/latest/build_docker/
 
-for acquiring the Carla docker image. Once downloaded, you can run the Carla container (headless) by
+for acquiring the Carla docker image. The ros-bridge used in this repo is compatible with Carla 9.11. Once downloaded, you can run the Carla container (headless) by
 
 ```bash
 docker run \
