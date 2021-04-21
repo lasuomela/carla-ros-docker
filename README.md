@@ -7,41 +7,27 @@ Check the instructions at
 
 https://carla.readthedocs.io/en/latest/build_docker/
 
-for acquiring the Carla docker image. The ros-bridge used in this repo is compatible with Carla 9.11. Once downloaded, you can run the Carla container (headless) by
-
-```bash
-docker run \
- -p 2000-2002:2000-2002 \
- --runtime=nvidia \
- --gpus 'all,"capabilities=graphics,utility,display,video,compute"' \
- -e SDL_VIDEODRIVER='offscreen' \
- -v /tmp/.X11-unix:/tmp/.X11-unix \
- -it \
- carlasim/carla \
- ./CarlaUE4.sh
-```
-
-To run with a screen, just add 
-
-```bash
-  -e SDL_VIDEODRIVER=x11 \
-  -e DISPLAY=$DISPLAY\
-```
-to the run directives.
+for acquiring the Carla docker image. The ros-bridge used in this repo is compatible with Carla 9.11. Once downloaded, you can try to run the Carla container (headless) by running the 'carla-docker-bash-run.sh' script, which runs the carla docker image headless. Alternatively, you can run the simulator with a screen by running the 'carla-docker-run.sh' script.
 
 ## Ros-bridge
 
-Next, clone the ROS bridge and checkout the latest stable version by
+Next, clone this repository, which contains a subtree of the official carla-simulator/ros-bridge.git repo with some additional components, by
 
 ```bash
-git clone --recursive https://github.com/carla-simulator/ros-bridge.git
+git clone --recursive https://github.com/lasuomela/ros-bridge-compose.git
 ```
 
-You can switch to a stable version by checking out tags, for example
+The version of Ros-Bridge included in this repo is compatible with Carla 9.11. You can update the Ros-Bridge components by running 
 
 ```bash
-git checkout tags/0.9.10.1
+git subtree pull-all
 ```
+if needed.
+
+Besides the official Ros-Bridge components, the repository contains two additional directories, 'docker-screen' and 'compose'.
+
+
+
 
 Build both docker images using the associated 'build.sh' scripts. Before building the Ros-bridge container, you might want to specify the desired python version for the ros bridge by setting the environment variable ROS_PYTHON_VERSION='3' or '2'.
 
