@@ -1,4 +1,4 @@
-# stunning-parakeet
+# Carla-ros-docker
 Dockerized Carla + Ros bridge
 
 Check the instructions at
