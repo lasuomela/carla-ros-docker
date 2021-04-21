@@ -1,6 +1,8 @@
 # Carla-ros-docker
 Dockerized Carla + Ros bridge
 
+## Prerequisites
+
 Check the instructions at
 
 https://carla.readthedocs.io/en/latest/build_docker/
