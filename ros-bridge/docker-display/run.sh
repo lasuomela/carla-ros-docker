@@ -32,14 +32,15 @@ shift $((OPTIND-1))
 
 echo "Using $DOCKER_IMAGE_NAME:$TAG"
 
-#    --mount 'type=bind,src=/home/lauri/Documents/carla-dev-stack,dst=/opt/carla-ros-bridge/src/' \
-
+export CWD=$(cd .. && pwd)
+xhost + local:
 docker run \
     -it --rm \
     --net=host \
     -e SDL_VIDEODRIVER='x11' \
     -e DISPLAY=$DISPLAY\
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    --mount 'type=bind,src=/home/lauri/Documents/ros-bridge/,dst=/opt/carla-ros-bridge/src/' \
+    --mount "type=bind,src=$CWD,dst=/opt/carla-ros-bridge/src/" \
     --gpus 'all,"capabilities=graphics,utility,display,video,compute"' \
-    "$DOCKER_IMAGE_NAME:$TAG" "$@"
+    "$DOCKER_IMAGE_NAME:$TAG" "$@" 
+xhost - local:
