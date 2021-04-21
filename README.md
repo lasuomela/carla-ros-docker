@@ -29,6 +29,7 @@ To run with a screen, just add
 ```
 to the run directives.
 
+## Ros-bridge
 
 Next, clone the ROS bridge and checkout the latest stable version by
 
