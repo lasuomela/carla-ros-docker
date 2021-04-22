@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 usage() { echo "Usage: $0 [-t <tag>] [-i <image>]" 1>&2; exit 1; }
 
@@ -32,7 +32,7 @@ shift $((OPTIND-1))
 
 echo "Using $DOCKER_IMAGE_NAME:$TAG"
 
-export CWD=$(cd .. && pwd)
+export CWD=$(cd . && pwd)
 xhost + local:
 docker run \
     -it --rm \
@@ -40,7 +40,8 @@ docker run \
     -e SDL_VIDEODRIVER='x11' \
     -e DISPLAY=$DISPLAY\
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    --mount "type=bind,src=$CWD,dst=/opt/carla-ros-bridge/src/" \
+    --mount "type=bind,src=$CWD/ad-runner/,dst=/opt/ad-runner/src/" \
+    -w /opt/ad-runner/ \
     --gpus 'all,"capabilities=graphics,utility,display,video,compute"' \
     "$DOCKER_IMAGE_NAME:$TAG" "$@" 
 xhost - local:
