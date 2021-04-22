@@ -48,7 +48,9 @@ Then, you can start the ROS-bridge by running
 ```bash
 ./run-ros-bridge.sh
 ```
-which will enter you into the container shell. Now, the 'ad-runner' directory is mounted into the docker container as a volume, meaning you can make persisting changes into the directory from inside the running container. This means that you should use the 'ad-runner' directory to store your development code. By default, the ad-runner only contains a singe ROS package, 'compose', which is a convenience tool for launching multiple ROS-brige components at once. Launching the 'compose' package will start the ROS nodes needed for controlling the Carla autopilot using the Rviz visualization tool. Before we can run the packages, it has to be compiled. Do this after every change into your code sotred in 'ad-runner'. The compilation is initiated with
+which will enter you into the container shell. 
+
+Now, the 'ad-runner' directory is mounted into the docker container as a volume, meaning you can make persisting changes into the directory from inside the running container. This means that you should use the 'ad-runner' directory to store your development code. By default, the ad-runner only contains a singe ROS package, 'compose', which is a convenience tool for launching multiple ROS-brige components at once. Launching the 'compose' package will start the ROS nodes needed for controlling the Carla autopilot using the Rviz visualization tool. Before we can run the packages, it has to be compiled. Do this after every change into your code sotred in 'ad-runner'. The compilation is initiated with
 
 ```bash
 colcon build
