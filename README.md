@@ -1,6 +1,6 @@
 # Carla-ros-docker
 
-Run Carla simulator and Carla-ROS bridge (ROS2 Foxy) inside docker containers.
+Run Carla simulator and Carla-ROS bridge (ROS2 Foxy) inside docker containers with the Carla autopilot.
 
 ## Prerequisites
 
