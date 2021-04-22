@@ -24,7 +24,7 @@ You can check
 
 https://carla.readthedocs.io/en/latest/build_docker/
 
-for more information about running the Carla docker image. The ROS-bridge used in this repo is compatible with Carla 9.11. Once downloaded, you can try to run the Carla container (headless) by running 
+for more information about running the Carla docker image. Once downloaded, you can try to run the Carla container (headless) by running 
 
 ```bash
 ./run-bash-carla.sh
