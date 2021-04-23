@@ -10,4 +10,4 @@ docker run \
  -v /tmp/.X11-unix:/tmp/.X11-unix \
  -it \
  carlasim/carla:$CARLA_VERSION \
- ./CarlaUE4.sh
+ ./CarlaUE4.sh Town01
