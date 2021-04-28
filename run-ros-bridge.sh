@@ -42,6 +42,10 @@ docker run \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     --mount "type=bind,src=$CWD/ad-runner/,dst=/opt/ad-runner/src/" \
     -w /opt/ad-runner/ \
+    --mount "type=bind,src=$CWD/scenario_runner/,dst=/opt/scenario_runner/" \
+    -e SCENARIO_RUNNER_PATH='/opt/scenario_runner/' \
     --gpus 'all,"capabilities=graphics,utility,display,video,compute"' \
     "$DOCKER_IMAGE_NAME:$TAG" "$@" 
 xhost - local:
+
+#     
