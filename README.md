@@ -1,5 +1,5 @@
 
-# place-recognition-nav
+# Containerized Carla+ROS2
 
 
 Run Carla simulator and Carla-ROS bridge (ROS2 Foxy) inside docker containers with the Carla autopilot.
@@ -14,6 +14,8 @@ git submodule update --init --recursive
 ```
 
 ## Carla simulator
+
+In the 'docker' directory:
 
 Pull the latest docker image compatible with the ROS-bridge master branch by running
 
@@ -40,32 +42,33 @@ which runs the Carla docker image headless. Alternatively, you can run the simul
 
 ## Ros-bridge
 
-The ROS-bridge for Carla is included as a submodule of this repository. Build it by running 
+The ROS-bridge ans Scenario Runner for Carla are included as submodules of this repository. Build them by running 
 
 ```bash
-./build-ros-bridge.sh
+./build-ros-bridge-scenario.sh
 ```
 Then, you can start the ROS-bridge by running
 
 ```bash
-./run-ros-bridge.sh
+./run-ros-bridge-scenario.sh
 ```
 which will enter you into the container shell. 
 
-Now, the 'ad-runner' directory is mounted into the docker container as a volume, meaning you can make persisting changes into the directory from inside the running container. This means that you should use the 'ad-runner' directory to store your development code. By default, the ad-runner only contains a singe ROS package, 'compose', which is a convenience tool for launching multiple ROS-brige components at once. Launching the 'compose' package will start the ROS nodes needed for controlling the Carla autopilot using the Rviz visualization tool. Before we can run the packages, it has to be compiled. Do this after every change into your code sotred in 'ad-runner'. The compilation is initiated with
+Now, the 'ad-runner' directory is mounted into the docker container as a volume, meaning you can make persisting changes into the directory from inside the running container. This means that you should use the 'ad-runner' directory to store your development code. After making changes into the development code remember to run
 
 ```bash
 colcon build
 ```
-which should be followed by
+and
 
 ```bash
 source /opt/ad-runner/install/setup.bash
 ```
+in the container.
 
 Now, you can start the carla autopilot by running (make sure to start the Carla simulator first)
 
 ```bash
-ros2 launch compose compose.launch.py
+ros2 launch place_reg_ad carla_ad_demo_with_scenario.launch.py 
 ```
-You might have to run the command twice if the first attempt crashes. After the nodes and Rviz GUI have been started you can set navigation goals for the autopilot by using the '2D Goal Pose' tool of Rviz. However, first you have to change the topic to which the '2D Goal Pose' is publishing. Do this by right clicking the toolbar in which the '2D Goal Pose' button is located. From the menu that opens, click 'Tool properties'. In the resulting setting window, change the '2D Point Goal' topic from '/goal_pose' to '/carla/ego_vehicle/goal'. Now you should be ready to set navigation goals for the autopilot.
+You might have to run the command twice if the first attempt crashes. After the nodes and Rviz GUI have been started you can set navigation goals for the autopilot by using the '2D Goal Pose' tool of Rviz. Alternatively, you can use the Scenario Runner addon to make the car follow a route predefined in the FollowRoute.xosc OpenScenario definition file.
