@@ -1,6 +1,7 @@
 #!/bin/bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CARLA_VERSION=$(cat ${SCRIPT_DIR}/ros-bridge/carla_ros_bridge/src/carla_ros_bridge/CARLA_VERSION)
+SCRIPT=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT")
+CARLA_VERSION=$(cat ${SCRIPT_DIR}/../ros-bridge/carla_ros_bridge/src/carla_ros_bridge/CARLA_VERSION)
 
 docker run \
  -p 2000-2002:2000-2002 \
@@ -10,4 +11,4 @@ docker run \
  -v /tmp/.X11-unix:/tmp/.X11-unix \
  -it \
  carlasim/carla:$CARLA_VERSION \
- ./CarlaUE4.sh Town01
+ ./CarlaUE4.sh /Game/Carla/Maps/Town01

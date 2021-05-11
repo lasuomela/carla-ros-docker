@@ -61,7 +61,7 @@ class MinimalPublisher(Node):
     def set_data(self, msg):
         self.get_logger().info('Pub: got "%s"' % msg.child_frame_id)
 
-        add_noise_to_pose(msg, 1, 25)
+        add_noise_to_pose(msg, 0.5, 15)
         self.msg = msg
 
 class MinimalSubscriber(Node):
