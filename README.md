@@ -66,9 +66,16 @@ source /opt/ad-runner/install/setup.bash
 ```
 in the container.
 
-Now, you can start the carla autopilot by running (make sure to start the Carla simulator first)
+## Running the demos
+
+There are two demos contained in the repo. In the first one, the navigation goals for the Carla autopilot are set manually in Rviz2 using the '2D Goal Pose' tool. This demo can be launched (make sure to start the Carla simulator first) by running
+
+```bash
+ros2 launch place_reg_ad goal_pose_demo.launch.py 
+```
+inside the running ros-bridge image. You might have to run the command twice if the first attempt crashes. Alternatively, you can use the Scenario Runner addon to make the car follow a route predefined in the FollowRoute.xosc OpenScenario definition file. This second demo can be launched by running
+
 
 ```bash
 ros2 launch place_reg_ad carla_ad_demo_with_scenario.launch.py 
 ```
-You might have to run the command twice if the first attempt crashes. After the nodes and Rviz GUI have been started you can set navigation goals for the autopilot by using the '2D Goal Pose' tool of Rviz. Alternatively, you can use the Scenario Runner addon to make the car follow a route predefined in the FollowRoute.xosc OpenScenario definition file.
