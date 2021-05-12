@@ -28,8 +28,9 @@ elif ROS_VERSION == 2:
              ['resource/' + package_name]),
              
             ('share/' + package_name, ['package.xml']),
-            ('share/' + package_name + '/config',
-             ['config/FollowRoute.xosc', 'config/place_reg_ad_ros2.rviz', 'config/objects.json']),
+            (os.path.join('share', package_name, 'config'), glob('config/*.xosc')),
+            (os.path.join('share', package_name, 'config'), glob('config/*.rviz')),
+            (os.path.join('share', package_name, 'config'), glob('config/*.json')),
             (os.path.join('share', package_name), glob('launch/*.launch.py'))
         ],
         install_requires=['setuptools'],
@@ -45,3 +46,6 @@ elif ROS_VERSION == 2:
         ],
         },
     )
+    
+       #         ('share/' + package_name + '/config',
+        #     ['config/FollowRoute.xosc', 'config/place_reg_ad_ros2.rviz', 'config/objects.json']),
