@@ -13,7 +13,7 @@ git clone https://github.com/lasuomela/carla-ros-docker.git
 git submodule update --init --recursive
 ```
 
-## Carla simulator
+## Build & Run the Carla simulator
 
 In the 'docker' directory:
 
@@ -40,7 +40,7 @@ which runs the Carla docker image headless. Alternatively, you can run the simul
 ./run-carla.sh
 ```
 
-## Ros-bridge
+##  Build & Run the Ros-bridge
 
 The ROS-bridge ans Scenario Runner for Carla are included as submodules of this repository. Build them by running 
 
